@@ -87,7 +87,7 @@ EOF
     export OMP_NUM_THREADS=$(nproc)
     gcc -O3 -fopenmp "stream.c" -o "stream" 2>/dev/null
 
-    if [[ -f "stream" ]]; then
+    if [[ -f "./stream" ]]; then
         STREAM_OUT=$("/stream")
         RAM_COPY=$(echo "$STREAM_OUT" | grep "COPY" | cut -d':' -f2)
         RAM_TRIAD=$(echo "$STREAM_OUT" | grep "TRIAD" | cut -d':' -f2)
