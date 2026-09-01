@@ -28,3 +28,5 @@ sudo apt install nano -y
 
 sudo apt install gcc -y
 sudo apt install hipcc -y
+
+#this is a comment
