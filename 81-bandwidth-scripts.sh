@@ -30,7 +30,7 @@ RAM_TRIAD="N/A"
 RAM_COPY="N/A"
 
 if command -v gcc >/dev/null 2>&1; then
-    cat << 'EOF' > "$TMP_DIR/stream.c"
+    cat << 'EOF' > "stream.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
@@ -85,10 +85,10 @@ int main() {
 EOF
 
     export OMP_NUM_THREADS=$(nproc)
-    gcc -O3 -fopenmp "$TMP_DIR/stream.c" -o "$TMP_DIR/stream" 2>/dev/null
+    gcc -O3 -fopenmp "stream.c" -o "stream" 2>/dev/null
 
-    if [[ -f "$TMP_DIR/stream" ]]; then
-        STREAM_OUT=$("$TMP_DIR/stream")
+    if [[ -f "stream" ]]; then
+        STREAM_OUT=$("/stream")
         RAM_COPY=$(echo "$STREAM_OUT" | grep "COPY" | cut -d':' -f2)
         RAM_TRIAD=$(echo "$STREAM_OUT" | grep "TRIAD" | cut -d':' -f2)
     fi
